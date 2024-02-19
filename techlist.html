@@ -2,10 +2,62 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="../css/style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
 <body>
+    <header></header>
+    <h6 class="path">Home/Add Request</h6>
+    <h3 class="big_title">New Request</h3>
+
+    <form action="/submit-form" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="fullName">Full Name:</label>
+            <input type="text" id="fullName" name="fullName">
+        </div>
     
+        <div class="form-group">
+            <label for="phoneNumber">Phone Number:</label>
+            <input type="tel" id="phoneNumber" name="phoneNumber">
+        </div>
+    
+        <div class="form-group">
+            <label for="location">Location:</label>
+            <input type="text" id="location" name="location">
+        </div>
+    
+        <div class="form-group">
+            <label for="fileUpload">Upload a Picture:</label>
+            <input type="file" id="fileUpload" name="fileUpload">
+        </div>
+
+        <div class="form-group">
+            <label for="category">Category:</label>
+            <select id="category" name="category"></select>
+        </div>
+
+        <div class="form-group">
+            <label for="details">Add Details:</label>
+            <textarea id="details" name="details" placeholder="Enter your details here"></textarea>
+        </div>
+
+        <input type="submit" value="Submit">
+    </form> 
 </body>
+<script>
+    var jsonData = {
+        "categories": ["Category 1", "Category 2", "Category 3"]
+    };
+    function populateCategories() {
+        var select = document.getElementById("category");
+        jsonData.categories.forEach(function(category) {
+            var option = document.createElement("option");
+            option.textContent = category;
+            option.value = category;
+            select.appendChild(option);
+        });
+    }
+    populateCategories();
+</script>
 </html>
